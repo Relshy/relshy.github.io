@@ -3,19 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio - Relshy</title>
+<title>Relshy's Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<!-- Font Awesome for social icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 /* Reset & Base */
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family:'Inter',sans-serif; background:#0a0a0a; color:#fff; line-height:1.6; min-height:100vh; overflow-x:hidden; }
 a { text-decoration:none; color:inherit; }
-img { border-radius:50%; transition: transform 0.3s ease; }
 
 /* Particle Background */
-#stars {
-  position: fixed; top:0; left:0; width:100%; height:100%; z-index:-1; background: transparent;
-}
+#stars { position: fixed; top:0; left:0; width:100%; height:100%; z-index:-1; background: transparent; }
 
 /* Container */
 .container { width:90%; max-width:1200px; margin:0 auto; padding:2rem 0; }
@@ -24,8 +23,30 @@ img { border-radius:50%; transition: transform 0.3s ease; }
 header { text-align:center; padding:4rem 0 6rem; position:relative; }
 header h1 { font-size:3rem; margin-bottom:0.5rem; background: linear-gradient(90deg,#4aa0ff,#ff4aa0); -webkit-background-clip:text; -webkit-text-fill-color:transparent; animation: gradient 3s ease infinite; }
 @keyframes gradient {0%,100%{background-position:0%}50%{background-position:100%}}
-.avatar { width:140px; height:140px; margin:0 auto 1rem; border:3px solid #4aa0ff; animation: float 4s ease-in-out infinite; }
+
+/* Avatar with local GIF */
+.avatar {
+  width: 140px;
+  height: 140px;
+  margin: 0 auto 1rem;
+  border: 3px solid #4aa0ff;
+  animation: float 4s ease-in-out infinite;
+  box-shadow: 0 0 15px rgba(74,160,255,0.5);
+  border-radius: 50%;
+  overflow: hidden; /* crops image into circle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar img {
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover; /* fills the circle without distortion */
+}
+
 @keyframes float {0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
 .badges span { background:#222; padding:0.3rem 0.7rem; margin:0 0.3rem; border-radius:12px; font-size:0.85rem; }
 
 /* About Section */
@@ -35,7 +56,7 @@ section.about p { max-width:700px; margin:1rem auto; font-size:1.1rem; }
 
 /* Statistics / Highlights */
 .stats { display:flex; justify-content:center; flex-wrap:wrap; gap:2rem; margin-top:2rem; }
-.stat-card { background:#1a1a1a; padding:2rem; border-radius:16px; text-align:center; min-width:120px; transition: transform 0.3s, box-shadow 0.3s; }
+.stat-card { background:#1a1a1a; padding:2rem; border-radius:16px; text-align:center; min-width:120px; transition: transform 0.3s, box-shadow 0.3s; cursor:pointer; }
 .stat-card:hover { transform:translateY(-8px) scale(1.05) rotate(-1deg); box-shadow:0 0 20px rgba(74,160,255,0.5); }
 .stat-card h3 { font-size:2rem; margin-bottom:0.5rem; color:#4aa0ff; }
 .stat-card p { font-size:0.95rem; }
@@ -55,7 +76,16 @@ section.projects.visible { opacity:1; transform:translateY(0); }
 section.contact { text-align:center; padding:4rem 0; opacity:0; transform:translateY(30px); transition: all 1s ease; }
 section.contact.visible { opacity:1; transform:translateY(0); }
 .social-links a { margin:0 0.5rem; display:inline-block; padding:0.6rem; border-radius:50%; background:#222; transition: transform 0.3s, background 0.3s, box-shadow 0.3s; }
-.social-links a:hover { transform:translateY(-5px); background:#4aa0ff; box-shadow:0 0 15px rgba(74,160,255,0.7); }
+.social-links a:hover { transform:translateY(-5px); box-shadow:0 0 15px rgba(74,160,255,0.7); }
+.social-links i { color:white; transition: all 0.3s ease; }
+
+/* Platform colors on hover */
+.social-links a.github:hover i { color: #fff; background: #000; border-radius:50%; }
+.social-links a.tiktok:hover i { color: #69C9D0; }
+.social-links a.discord:hover i { color: #7289DA; }
+.social-links a.youtube:hover i { color: #FF0000; }
+
+/* Contact Button */
 .contact button { margin-top:2rem; padding:0.75rem 1.5rem; border:none; background:#4aa0ff; border-radius:12px; cursor:pointer; font-weight:600; transition: all 0.3s; }
 .contact button:hover { background:#3390e6; box-shadow:0 0 15px rgba(74,160,255,0.7); }
 
@@ -70,7 +100,9 @@ section.contact.visible { opacity:1; transform:translateY(0); }
 
 <!-- Header / Hero -->
 <header>
-  <img src="avatar.jpg" alt="Profile Picture" class="avatar">
+  <div class="avatar">
+    <img src="C:\Users\janss\OneDrive\Bureaublad\Website\avatar.jpg" alt="Profile Picture">
+  </div>
   <h1>Relshy</h1>
   <div class="badges">
     <span>Developer</span>
@@ -81,38 +113,54 @@ section.contact.visible { opacity:1; transform:translateY(0); }
 <!-- About Section -->
 <section class="about container">
   <h2>About Me</h2>
-  <p>I'm Relshy, a developer thats interested in about everything that involves software. Experienced in almost all types of software going from a simple website to a custom rootkit or C2 Server!</p>
-
+  <p>I'm Relshy, a Full-Stack Developer with a broad interest in software engineering. I have experience across a wide range of applications, from building websites to developing advanced tools such as custom C2 servers.</p>
   <div class="stats">
-    <div class="stat-card"><h3>12</h3><p>Projects</p></div>
-    <div class="stat-card"><h3>3</h3><p>Years Experience</p></div>
-    <div class="stat-card"><h3>5</h3><p>Languages</p></div>
-    <div class="stat-card"><h3>100%</h3><p>Dedication</p></div>
+    <div class="stat-card" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'});">
+      <h3>12</h3><p>Projects</p>
+    </div>
+    <div class="stat-card">
+      <h3>3</h3><p>Years Experience</p>
+    </div>
+    <div class="stat-card">
+      <h3>10+</h3><p>Languages</p>
+    </div>
   </div>
 </section>
 
 <!-- Projects / Portfolio -->
-<section class="projects container">
+<!-- Projects / Portfolio -->
+<section id="projects" class="projects container">
   <h2>Projects</h2>
   <div class="project-cards">
-    <div class="project-card"><h4>Project 1</h4><p>Brief description of your first project.</p></div>
-    <div class="project-card"><h4>Project 2</h4><p>Brief description of your second project.</p></div>
-    <div class="project-card"><h4>Project 3</h4><p>Brief description of your third project.</p></div>
+    <div class="project-card">
+      <h4>Load-Testing-DoS-Tool</h4>
+      <p>Lightweight Python script that spins up concurrent workers to test URLs. Optional proxy support.</p>
+      <a href="https://github.com/Relshy/Load-Testing-DoS-Tool" target="_blank">View on GitHub</a>
+    </div>
+    <div class="project-card">
+      <h4>Project 2</h4>
+      <p>Coming Soon.</p>
+      <a href="https://github.com/Relshy/YourSecondRepo" target="_blank">View on GitHub</a>
+    </div>
+    <div class="project-card">
+      <h4>Project 3</h4>
+      <p>Coming Soon.</p>
+      <a href="https://github.com/Relshy/YourThirdRepo" target="_blank">View on GitHub</a>
+    </div>
   </div>
-  <button>View All Projects</button>
+  <button onclick="window.location.href='https://github.com/Relshy'">View All Projects</button>
 </section>
+
 
 <!-- Contact / Links -->
 <section class="contact container">
   <h2>Contact Me</h2>
   <div class="social-links">
-    <a href="https://github.com/relshy" target="_blank">GitHub</a>
-    <a href="https://www.tiktok.com/@relshy" target="_blank">TikTok</a>
-    <a href="https://discord.com/users/relshy" target="_blank">Discord</a>
-    <a href="https://www.linkedin.com/in/relshy" target="_blank">LinkedIn</a>
-    <a href="https://www.youtube.com/@relshy" target="_blank">YouTube</a>
+    <a href="https://github.com/Relshy" class="github" target="_blank"><i class="fab fa-github fa-2x"></i></a>
+    <a href="https://www.tiktok.com/@Relshyy" class="tiktok" target="_blank"><i class="fab fa-tiktok fa-2x"></i></a>
+    <a href="https://discord.gg/YMDR7yQC5W" class="discord" target="_blank"><i class="fab fa-discord fa-2x"></i></a>
+    <a href="https://www.youtube.com/@Relshyy" class="youtube" target="_blank"><i class="fab fa-youtube fa-2x"></i></a>
   </div>
-  <button>Get in Touch</button>
 </section>
 
 <script>
