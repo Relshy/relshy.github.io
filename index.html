@@ -1,10 +1,97 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta http-equiv="refresh" content="0; url=https://relshy.eu.pythonanywhere.com">
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="3; url=https://relshy.eu.pythonanywhere.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Redirecting… - Relshy</title>
+
     <link rel="canonical" href="https://relshy.eu.pythonanywhere.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg1: #0a192f;       /* dark navy */
+            --bg2: #112d4e;       /* rich deep blue */
+            --accent: #00b4d8;    /* vivid cyan */
+            --accent-light: #48cae4;
+            --text: #eaf6ff;      /* soft bluish white */
+            --light: #ffffff25;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            height: 100vh;
+            background: linear-gradient(135deg, var(--bg1), var(--bg2));
+            color: var(--text);
+            font-family: "Inter", system-ui, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 420px;
+            padding: 2rem;
+        }
+
+        h1 {
+            font-size: 2.6rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--accent-light), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .loader {
+            width: 60px;
+            height: 60px;
+            border: 5px solid var(--light);
+            border-top: 5px solid var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 2rem;
+        }
+
+        a {
+            color: var(--accent-light);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        a:hover { text-decoration: underline; }
+
+        footer {
+            margin-top: 4rem;
+            font-size: 0.9rem;
+            opacity: 0.6;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
 </head>
 <body>
-    <p>Redirecting to <a href="https://relshy.eu.pythonanywhere.com">relshy.eu.pythonanywhere.com</a>...</p>
+    <div class="container">
+        <div class="loader"></div>
+        <h1>Hold tight…</h1>
+        <p>We’re sending you to the main Relshy site</p>
+        <p><strong><a href="https://relshy.eu.pythonanywhere.com">relshy.eu.pythonanywhere.com</a></strong></p>
+        <p>If you aren’t redirected automatically, follow the link above.</p>
+
+        <footer>© 2025 Relshy — All rights reserved</footer>
+    </div>
 </body>
 </html>
